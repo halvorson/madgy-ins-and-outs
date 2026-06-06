@@ -3,15 +3,23 @@ import { signInAnonymously, onAuthStateChanged } from 'firebase/auth'
 import { onSnapshot } from 'firebase/firestore'
 import { auth } from './lib/firebase'
 import { logsCollection, addLog } from './lib/firestore'
+import { getTrackables, Trackable } from './lib/trackables'
 import { TrackableList } from './components/TrackableList'
+import { IdentityPicker } from './components/IdentityPicker'
 
 function App() {
   const [authLoading, setAuthLoading] = useState(true)
   const [authError, setAuthError] = useState(false)
+  const [trackables, setTrackables] = useState<Trackable[]>([])
+  const [identity, setIdentity] = useState<'Me' | 'Wife' | null>(
+    () => (localStorage.getItem('madgy_caregiver') as 'Me' | 'Wife' | null)
+  )
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        const items = await getTrackables()
+        setTrackables(items)
         setAuthLoading(false)
       }
     })
@@ -34,8 +42,14 @@ function App() {
     return () => unsubscribeLogs()
   }, [authLoading])
 
+  function handleIdentityChange(next: 'Me' | 'Wife') {
+    localStorage.setItem('madgy_caregiver', next)
+    setIdentity(next)
+  }
+
   async function handleLog(trackableId: string): Promise<void> {
-    await addLog('madgy', trackableId)
+    if (!identity) return
+    await addLog('madgy', trackableId, identity)
   }
 
   if (authError) {
@@ -53,10 +67,14 @@ function App() {
           Madgy Tracker
         </h1>
         {!authLoading && (
-          <TrackableList
-            trackables={[{ id: 'gabapentin', displayName: 'Gabapentin' }]}
-            onLog={handleLog}
-          />
+          <>
+            <IdentityPicker value={identity} onChange={handleIdentityChange} />
+            <TrackableList
+              trackables={trackables}
+              onLog={handleLog}
+              disabled={identity === null}
+            />
+          </>
         )}
       </div>
     </div>

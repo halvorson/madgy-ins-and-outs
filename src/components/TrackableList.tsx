@@ -1,16 +1,13 @@
+import { Trackable } from '../lib/trackables'
 import { TrackableCard } from './TrackableCard'
-
-interface Trackable {
-  id: string
-  displayName: string
-}
 
 interface TrackableListProps {
   trackables: Trackable[]
   onLog: (trackableId: string) => Promise<void>
+  disabled?: boolean
 }
 
-export function TrackableList({ trackables, onLog }: TrackableListProps) {
+export function TrackableList({ trackables, onLog, disabled }: TrackableListProps) {
   return (
     <ul className="flex flex-col gap-6">
       {trackables.map((t) => (
@@ -19,6 +16,7 @@ export function TrackableList({ trackables, onLog }: TrackableListProps) {
             id={t.id}
             displayName={t.displayName}
             onLog={() => onLog(t.id)}
+            disabled={disabled}
           />
         </li>
       ))}
