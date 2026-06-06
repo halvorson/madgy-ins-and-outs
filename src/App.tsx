@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { signInAnonymously, onAuthStateChanged } from 'firebase/auth'
-import { onSnapshot } from 'firebase/firestore'
+import { onSnapshot, Timestamp } from 'firebase/firestore'
 import { auth } from './lib/firebase'
 import { logsCollection, addLog } from './lib/firestore'
 import { getTrackables, Trackable } from './lib/trackables'
@@ -14,6 +14,8 @@ function App() {
   const [identity, setIdentity] = useState<'Me' | 'Wife' | null>(
     () => (localStorage.getItem('madgy_caregiver') as 'Me' | 'Wife' | null)
   )
+  const [lastLogged, setLastLogged] = useState<Record<string, Timestamp>>({})
+  const [, setTick] = useState(0)
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
@@ -35,12 +37,26 @@ function App() {
   useEffect(() => {
     if (authLoading) return
 
-    const unsubscribeLogs = onSnapshot(logsCollection('madgy'), () => {
-      // Phase 1: confirms listener is active; elapsed-time display is Phase 3 (DISP-01)
+    const unsubscribeLogs = onSnapshot(logsCollection('madgy'), (snapshot) => {
+      const map: Record<string, Timestamp> = {}
+      snapshot.docs.forEach((doc) => {
+        const data = doc.data()
+        const id: string = data.trackableId
+        const ts: Timestamp = data.timestamp
+        if (!map[id] || ts.toMillis() > map[id].toMillis()) {
+          map[id] = ts
+        }
+      })
+      setLastLogged(map)
     })
 
     return () => unsubscribeLogs()
   }, [authLoading])
+
+  useEffect(() => {
+    const id = setInterval(() => setTick((n) => n + 1), 30000)
+    return () => clearInterval(id)
+  }, [])
 
   function handleIdentityChange(next: 'Me' | 'Wife') {
     localStorage.setItem('madgy_caregiver', next)
@@ -73,6 +89,7 @@ function App() {
               trackables={trackables}
               onLog={handleLog}
               disabled={identity === null}
+              lastLogged={lastLogged}
             />
           </>
         )}
