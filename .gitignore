@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Firebase CLI deploy cache
+.firebase/
+
 # Environment variables — never commit real credentials
 .env
 .env.local
