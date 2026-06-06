@@ -13,7 +13,7 @@ Three vertical slices from zero to shipped MVP. Phase 1 gets a real, deployed ap
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Deployed Thin Slice** - Firebase infra wired, one trackable logs and syncs live on a deployed URL
+- [x] **Phase 1: Deployed Thin Slice** - Firebase infra wired, one trackable logs and syncs live on a deployed URL
 - [ ] **Phase 2: Full Trackables & Logging** - All trackables seeded via abstracted config, one-tap logging with Me/Wife picker
 - [ ] **Phase 3: Display & Polish** - Elapsed-time readouts for all trackables, never-logged state, mobile-first layout complete
 
@@ -47,7 +47,7 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 01-03-PLAN.md — Production build and Firebase deploy, end-to-end verification on two devices
+- [x] 01-03-PLAN.md — Production build and Firebase deploy, end-to-end verification on two devices
 
 ### Phase 2: Full Trackables & Logging
 
@@ -88,6 +88,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deployed Thin Slice | 2/3 | In Progress|  |
+| 1. Deployed Thin Slice | 3/3 | Complete | 2026-06-06 |
 | 2. Full Trackables & Logging | 0/TBD | Not started | - |
 | 3. Display & Polish | 0/TBD | Not started | - |
