@@ -62,8 +62,17 @@ Plans:
   3. Before logging, a Me/Wife picker is presented and the chosen name is stored with the entry in Firestore
   4. Swapping the config function's data source requires no changes to the components that render trackables
 
-**Plans**: TBD
+**Plans**: 2 plans
 **UI hint**: yes
+
+Plans:
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — trackables.ts config layer, firestore.ts loggedBy param, IdentityPicker component
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — Wire App.tsx, TrackableList, TrackableCard; end-to-end human verification
 
 ### Phase 3: Display & Polish
 
@@ -89,5 +98,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deployed Thin Slice | 3/3 | Complete | 2026-06-06 |
-| 2. Full Trackables & Logging | 0/TBD | Not started | - |
+| 2. Full Trackables & Logging | 0/2 | Not started | - |
 | 3. Display & Polish | 0/TBD | Not started | - |
