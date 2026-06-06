@@ -17,14 +17,15 @@ At a glance, both caregivers can see when each care event last happened — so m
 - ✓ Caregiver can log a trackable as done "now" with one tap — Phase 1
 - ✓ Each log entry records who did it via a quick Me/Wife picker (no accounts) — Phase 2
 - ✓ Trackables (pills + activities) are defined via a config layer (hardcoded/seeded for MVP, but accessed through an abstracted call so it can become dynamic later) — Phase 2
-- ✓ One person's log appears on the other person's screen in real time (no manual refresh) — Phase 1 (listener active; display of elapsed time is Phase 3)
+- ✓ One person's log appears on the other person's screen in real time (no manual refresh) — Phase 1 (listener active) / Phase 3 (elapsed time display)
+- ✓ Caregiver can see, for each trackable, how long ago it was last logged — Phase 3
 - ✓ Access is gated by invisible Firebase Anonymous Auth + Firestore rules requiring auth, served from an obscure Hosting URL — Phase 1
 
 ### Active
 
 <!-- Current scope. Building toward these. MVP. -->
 
-- [ ] Caregiver can see, for each trackable (each pill + ate/peed/pooed), how long ago it was last logged
+*(none — all MVP requirements validated)*
 
 ### Out of Scope
 
