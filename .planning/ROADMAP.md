@@ -99,6 +99,17 @@ Plans:
 
 - [ ] 03-02-PLAN.md — TrackableCard lastLoggedText prop, TrackableList grouped sections (Pills/Activities), human verification
 
+## Backlog
+
+### Phase 999.1: Extrapolate this to work for multiple animals / people (BACKLOG)
+
+**Goal:** [Captured for future planning]
+**Requirements:** TBD
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (promote with /gsd:review-backlog when ready)
+
 ## Progress
 
 **Execution Order:**
