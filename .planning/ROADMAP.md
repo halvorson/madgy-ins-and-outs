@@ -1,0 +1,70 @@
+# Roadmap: Madgy Tracker
+
+## Overview
+
+Three vertical slices from zero to shipped MVP. Phase 1 gets a real, deployed app that logs one event and syncs live between phones. Phase 2 broadens to all trackables with the full logging UX including the who-picker. Phase 3 completes the display layer — elapsed-time readouts for every trackable and a polished mobile-first layout.
+
+## Phases
+
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Deployed Thin Slice** - Firebase infra wired, one trackable logs and syncs live on a deployed URL
+- [ ] **Phase 2: Full Trackables & Logging** - All trackables seeded via abstracted config, one-tap logging with Me/Wife picker
+- [ ] **Phase 3: Display & Polish** - Elapsed-time readouts for all trackables, never-logged state, mobile-first layout complete
+
+## Phase Details
+
+### Phase 1: Deployed Thin Slice
+**Goal**: A real deployed app that lets both caregivers tap to log one event and instantly see it appear on each other's screen
+**Mode:** mvp
+**Depends on**: Nothing (first phase)
+**Requirements**: INFRA-01, INFRA-02, INFRA-03, TRACK-02, LOG-03, DISP-02
+**Success Criteria** (what must be TRUE):
+  1. Opening the Firebase Hosting URL on a phone shows the app (no blank screen, no build errors)
+  2. Tapping a log button writes an entry to Firestore that is immediately visible in the Firebase console
+  3. The same entry appears on a second device without refreshing the page
+  4. An unauthenticated direct Firestore read (e.g. via REST) is rejected by security rules
+  5. The Firestore data structure includes a subject field (even if hardcoded to "madgy") so it does not preclude future multi-subject use
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 2: Full Trackables & Logging
+**Goal**: All care trackables (every pill plus ate, peed, pooed) are available via an abstracted config layer, and caregivers can log any of them with a single tap and attribute the action to themselves
+**Mode:** mvp
+**Depends on**: Phase 1
+**Requirements**: TRACK-01, LOG-01, LOG-02
+**Success Criteria** (what must be TRUE):
+  1. All pills and ate/peed/pooed trackables appear in the app, driven by a config function (not inline JSX literals)
+  2. Tapping any trackable's button logs it as done at the current time with a single tap
+  3. Before logging, a Me/Wife picker is presented and the chosen name is stored with the entry in Firestore
+  4. Swapping the config function's data source requires no changes to the components that render trackables
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 3: Display & Polish
+**Goal**: Every trackable shows how long ago it was last done (or that it has never been done), and the layout is comfortable to use one-handed on a phone
+**Mode:** mvp
+**Depends on**: Phase 2
+**Requirements**: DISP-01, DISP-03
+**Success Criteria** (what must be TRUE):
+  1. Each trackable shows a human-readable elapsed time (e.g. "3h 12m ago") that updates without a page refresh
+  2. A trackable that has never been logged shows a clear "never" or equivalent indicator instead of a time
+  3. The full trackable list is legible and tappable on a 375px-wide phone screen without horizontal scrolling
+  4. Buttons are large enough to tap accurately one-handed
+**Plans**: TBD
+**UI hint**: yes
+
+## Progress
+
+**Execution Order:**
+Phases execute in numeric order: 1 → 2 → 3
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Deployed Thin Slice | 0/TBD | Not started | - |
+| 2. Full Trackables & Logging | 0/TBD | Not started | - |
+| 3. Display & Polish | 0/TBD | Not started | - |
