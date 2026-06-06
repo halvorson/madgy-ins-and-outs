@@ -10,25 +10,25 @@ Requirements for the initial MVP release. Each maps to a roadmap phase.
 ### Trackables
 
 - [ ] **TRACK-01**: App provides a seeded set of trackables (each pill plus ate, peed, pooed) defined through an abstracted config layer, so the source can later become dynamic without changing consumers
-- [ ] **TRACK-02**: Trackables and log entries are stored in Firestore under a structure that does not preclude adding multiple subjects (pets/people) later
+- [x] **TRACK-02**: Trackables and log entries are stored in Firestore under a structure that does not preclude adding multiple subjects (pets/people) later
 
 ### Logging
 
 - [ ] **LOG-01**: User can log a trackable as done at the current time with a single tap
 - [ ] **LOG-02**: User selects who performed the action (Me/Wife picker) and it is recorded with the entry, without any login
-- [ ] **LOG-03**: Each logged action is persisted to Firestore as an append-only entry (no edit/delete in MVP)
+- [x] **LOG-03**: Each logged action is persisted to Firestore as an append-only entry (no edit/delete in MVP)
 
 ### Display
 
 - [ ] **DISP-01**: For each trackable, the app shows how long ago it was last logged (e.g. "3h 12m ago"), or indicates it has never been logged
-- [ ] **DISP-02**: When either caregiver logs an action, the other caregiver's screen updates in real time without a manual refresh
+- [x] **DISP-02**: When either caregiver logs an action, the other caregiver's screen updates in real time without a manual refresh
 - [ ] **DISP-03**: The app is a mobile-first single-page layout usable one-handed on a phone
 
 ### Access & Infrastructure
 
 - [x] **INFRA-01**: App is built with a lightweight framework (React + Vite or similar) and deployed to Firebase Hosting
-- [ ] **INFRA-02**: Users are authenticated invisibly via Firebase Anonymous Auth (no sign-in screen)
-- [ ] **INFRA-03**: Firestore security rules require authentication for all reads and writes
+- [x] **INFRA-02**: Users are authenticated invisibly via Firebase Anonymous Auth (no sign-in screen)
+- [x] **INFRA-03**: Firestore security rules require authentication for all reads and writes
 
 ## v2 Requirements
 
@@ -67,16 +67,16 @@ Which phases cover which requirements. Populated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | TRACK-01 | Phase 2 | Pending |
-| TRACK-02 | Phase 1 | Pending |
+| TRACK-02 | Phase 1 | Complete |
 | LOG-01 | Phase 2 | Pending |
 | LOG-02 | Phase 2 | Pending |
-| LOG-03 | Phase 1 | Pending |
+| LOG-03 | Phase 1 | Complete |
 | DISP-01 | Phase 3 | Pending |
-| DISP-02 | Phase 1 | Pending |
+| DISP-02 | Phase 1 | Complete |
 | DISP-03 | Phase 3 | Pending |
 | INFRA-01 | Phase 1 | Complete |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 11 total

@@ -43,7 +43,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-02-PLAN.md — Anonymous auth, Firestore data layer, React component tree (App/TrackableList/TrackableCard), security rules
+- [x] 01-02-PLAN.md — Anonymous auth, Firestore data layer, React component tree (App/TrackableList/TrackableCard), security rules
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
@@ -88,6 +88,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deployed Thin Slice | 1/3 | In Progress|  |
+| 1. Deployed Thin Slice | 2/3 | In Progress|  |
 | 2. Full Trackables & Logging | 0/TBD | Not started | - |
 | 3. Display & Polish | 0/TBD | Not started | - |

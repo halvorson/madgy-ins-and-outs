@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Phase 1 UI-SPEC approved
-last_updated: "2026-06-06T14:43:48.646Z"
+last_updated: "2026-06-06T14:47:07.275Z"
 last_activity: 2026-06-06 -- Phase 01 execution started
 progress:
   total_phases: 3
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-06-06)
 ## Current Position
 
 Phase: 01 (deployed-thin-slice) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Executing Phase 01
-Last activity: 2026-06-06 -- Phase 01 execution started
+Last activity: 2026-06-06 -- Completed 01-02 Firestore data layer + React component tree
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -51,6 +51,8 @@ Progress: [███░░░░░░░] 33%
 - Last 5 plans: —
 - Trend: —
 
+| Phase 01-deployed-thin-slice P02 | ~2 minutes | 2 tasks | 6 files |
+
 *Updated after each plan completion*
 
 ## Accumulated Context
@@ -64,6 +66,8 @@ Recent decisions affecting current work:
 - Init: Firestore data model must include a subject field from day one (future multi-subject support)
 - Init: Anonymous auth is invisible — no sign-in screen ever shown to users
 - Init: Config layer is abstracted so it can be replaced without touching rendering components
+- 01-02: Render TrackableList only after auth resolves — simpler than threading authLoading as prop to each card
+- 01-02: loggedBy hardcoded to 'caregiver' for Phase 1; Phase 2 adds Me/Wife picker per LOG-02
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-06T14:43:48.641Z
+Last session: 2026-06-06T14:47:07.270Z
 Stopped at: Phase 1 UI-SPEC approved
 Resume file: .planning/phases/01-deployed-thin-slice/01-UI-SPEC.md
