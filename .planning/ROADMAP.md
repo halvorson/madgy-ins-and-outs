@@ -29,8 +29,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The same entry appears on a second device without refreshing the page
   4. An unauthenticated direct Firestore read (e.g. via REST) is rejected by security rules
   5. The Firestore data structure includes a subject field (even if hardcoded to "madgy") so it does not preclude future multi-subject use
-**Plans**: TBD
+**Plans**: 3 plans
 **UI hint**: yes
+
+Plans:
+- [ ] 01-01-PLAN.md — Vite scaffold, Firebase SDK wiring, env config, Hosting config (manual Firebase project creation checkpoint)
+- [ ] 01-02-PLAN.md — Anonymous auth, Firestore data layer, React component tree (App/TrackableList/TrackableCard), security rules
+- [ ] 01-03-PLAN.md — Production build and Firebase deploy, end-to-end verification on two devices
 
 ### Phase 2: Full Trackables & Logging
 **Goal**: All care trackables (every pill plus ate, peed, pooed) are available via an abstracted config layer, and caregivers can log any of them with a single tap and attribute the action to themselves
@@ -65,6 +70,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deployed Thin Slice | 0/TBD | Not started | - |
+| 1. Deployed Thin Slice | 0/3 | Not started | - |
 | 2. Full Trackables & Logging | 0/TBD | Not started | - |
 | 3. Display & Polish | 0/TBD | Not started | - |
