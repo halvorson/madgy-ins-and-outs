@@ -14,7 +14,7 @@ Three vertical slices from zero to shipped MVP. Phase 1 gets a real, deployed ap
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Deployed Thin Slice** - Firebase infra wired, one trackable logs and syncs live on a deployed URL
-- [ ] **Phase 2: Full Trackables & Logging** - All trackables seeded via abstracted config, one-tap logging with Me/Wife picker
+- [x] **Phase 2: Full Trackables & Logging** - All trackables seeded via abstracted config, one-tap logging with Me/Wife picker (completed 2026-06-06)
 - [ ] **Phase 3: Display & Polish** - Elapsed-time readouts for all trackables, never-logged state, mobile-first layout complete
 
 ## Phase Details
@@ -68,11 +68,11 @@ Plans:
 Plans:
 **Wave 1**
 
-- [ ] 02-01-PLAN.md — trackables.ts config layer, firestore.ts loggedBy param, IdentityPicker component
+- [x] 02-01-PLAN.md — trackables.ts config layer, firestore.ts loggedBy param, IdentityPicker component
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 02-02-PLAN.md — Wire App.tsx, TrackableList, TrackableCard; end-to-end human verification
+- [x] 02-02-PLAN.md — Wire App.tsx, TrackableList, TrackableCard; end-to-end human verification
 
 ### Phase 3: Display & Polish
 
@@ -87,8 +87,17 @@ Plans:
   3. The full trackable list is legible and tappable on a 375px-wide phone screen without horizontal scrolling
   4. Buttons are large enough to tap accurately one-handed
 
-**Plans**: TBD
+**Plans**: 2 plans
 **UI hint**: yes
+
+Plans:
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — formatElapsed utility (src/lib/elapsed.ts), App.tsx snapshot callback + setInterval tick + lastLogged state
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 03-02-PLAN.md — TrackableCard lastLoggedText prop, TrackableList grouped sections (Pills/Activities), human verification
 
 ## Progress
 
@@ -98,5 +107,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Deployed Thin Slice | 3/3 | Complete | 2026-06-06 |
-| 2. Full Trackables & Logging | 0/2 | Not started | - |
-| 3. Display & Polish | 0/TBD | Not started | - |
+| 2. Full Trackables & Logging | 2/2 | Complete    | 2026-06-06 |
+| 3. Display & Polish | 0/2 | Not started | - |
