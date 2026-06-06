@@ -1,24 +1,16 @@
 interface IdentityPickerProps {
-  value: 'Me' | 'Wife' | null
+  value: 'Me' | 'Wife'
   onChange: (identity: 'Me' | 'Wife') => void
-}
-
-function buttonClass(isSelected: boolean): string {
-  const base = 'rounded-md px-4 py-2 min-h-[44px] text-sm font-semibold'
-  return isSelected
-    ? `${base} bg-blue-600 text-white`
-    : `${base} bg-white text-gray-700 border border-gray-300`
 }
 
 export function IdentityPicker({ value, onChange }: IdentityPickerProps) {
   return (
-    <div className="mb-6 flex items-center gap-2">
-      <span className="text-sm font-semibold text-gray-600">I am:</span>
+    <div className="flex rounded-full border border-gray-300 overflow-hidden text-sm font-semibold">
       <button
         aria-label="Set identity to Me"
         aria-pressed={value === 'Me'}
         onClick={() => onChange('Me')}
-        className={buttonClass(value === 'Me')}
+        className={`px-4 py-1.5 transition-colors${value === 'Me' ? ' bg-blue-600 text-white' : ' bg-white text-gray-600'}`}
       >
         Me
       </button>
@@ -26,7 +18,7 @@ export function IdentityPicker({ value, onChange }: IdentityPickerProps) {
         aria-label="Set identity to Wife"
         aria-pressed={value === 'Wife'}
         onClick={() => onChange('Wife')}
-        className={buttonClass(value === 'Wife')}
+        className={`px-4 py-1.5 transition-colors${value === 'Wife' ? ' bg-blue-600 text-white' : ' bg-white text-gray-600'}`}
       >
         Wife
       </button>

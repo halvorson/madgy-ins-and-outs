@@ -6,26 +6,24 @@ import { TrackableCard } from './TrackableCard'
 interface TrackableListProps {
   trackables: Trackable[]
   onLog: (trackableId: string) => Promise<void>
-  disabled?: boolean
   lastLogged: Record<string, Timestamp>
 }
 
-export function TrackableList({ trackables, onLog, disabled, lastLogged }: TrackableListProps) {
+export function TrackableList({ trackables, onLog, lastLogged }: TrackableListProps) {
   const pills = trackables.filter((t) => t.type === 'pill')
   const activities = trackables.filter((t) => t.type === 'activity')
 
   function renderGroup(items: Trackable[], label: string, addTopMargin: boolean) {
     return (
-      <div className={addTopMargin ? 'mt-6' : ''}>
+      <div className={addTopMargin ? 'mt-4' : ''}>
         <h2 className="text-xs font-normal uppercase tracking-wide text-gray-400 mb-2">{label}</h2>
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col gap-3">
           {items.map((t) => (
             <li key={t.id}>
               <TrackableCard
                 id={t.id}
                 displayName={t.displayName}
                 onLog={() => onLog(t.id)}
-                disabled={disabled}
                 lastLoggedText={formatElapsed(lastLogged[t.id])}
               />
             </li>

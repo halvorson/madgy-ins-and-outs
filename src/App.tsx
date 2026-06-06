@@ -11,8 +11,8 @@ function App() {
   const [authLoading, setAuthLoading] = useState(true)
   const [authError, setAuthError] = useState(false)
   const [trackables, setTrackables] = useState<Trackable[]>([])
-  const [identity, setIdentity] = useState<'Me' | 'Wife' | null>(
-    () => (localStorage.getItem('madgy_caregiver') as 'Me' | 'Wife' | null)
+  const [identity, setIdentity] = useState<'Me' | 'Wife'>(
+    () => (localStorage.getItem('madgy_caregiver') as 'Me' | 'Wife') ?? 'Me'
   )
   const [lastLogged, setLastLogged] = useState<Record<string, Timestamp>>({})
   const [, setTick] = useState(0)
@@ -42,7 +42,9 @@ function App() {
       snapshot.docs.forEach((doc) => {
         const data = doc.data()
         const id: string = data.trackableId
-        const ts: Timestamp = data.timestamp
+        const ts: Timestamp | null = data.timestamp
+        // serverTimestamp() is null in the local optimistic snapshot before the server round-trips
+        if (!ts) return
         if (!map[id] || ts.toMillis() > map[id].toMillis()) {
           map[id] = ts
         }
@@ -64,7 +66,6 @@ function App() {
   }
 
   async function handleLog(trackableId: string): Promise<void> {
-    if (!identity) return
     await addLog('madgy', trackableId, identity)
   }
 
@@ -79,19 +80,18 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       <div className="max-w-md mx-auto px-4 py-6">
-        <h1 className="text-xl font-semibold leading-tight text-gray-900 mb-6">
-          Madgy Tracker
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-xl font-semibold leading-tight text-gray-900">
+            Madgy Tracker
+          </h1>
+          <IdentityPicker value={identity} onChange={handleIdentityChange} />
+        </div>
         {!authLoading && (
-          <>
-            <IdentityPicker value={identity} onChange={handleIdentityChange} />
-            <TrackableList
-              trackables={trackables}
-              onLog={handleLog}
-              disabled={identity === null}
-              lastLogged={lastLogged}
-            />
-          </>
+          <TrackableList
+            trackables={trackables}
+            onLog={handleLog}
+            lastLogged={lastLogged}
+          />
         )}
       </div>
     </div>
