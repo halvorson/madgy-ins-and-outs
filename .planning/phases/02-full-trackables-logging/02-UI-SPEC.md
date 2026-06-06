@@ -28,6 +28,10 @@ No `tailwind.config.*` — using CSS-native configuration.
 
 All Phase 2 design decisions must be consistent with this baseline.
 
+**Primary focal point:** The `Log` button on each card, rendered in `blue-600` against the white
+card surface. The active identity picker button (also `blue-600`) is a secondary focal point in
+the header.
+
 ---
 
 ## 2. Spacing
@@ -37,9 +41,8 @@ Scale: 8-point grid (multiples of 4px only).
 | Token | px | Usage |
 |-------|----|-------|
 | 1 | 4px | Inline label gap, tight badge spacing |
-| 2 | 8px | Button internal padding (y-axis), label-to-value gap |
-| 3 | 12px | — (avoid — not on scale) |
-| 4 | 16px | Card internal padding (`p-4`), horizontal container padding (`px-4`) |
+| 2 | 8px | Button internal padding (y-axis), label-to-value gap, identity bar gap |
+| 4 | 16px | Card internal padding (`p-4`), horizontal container padding (`px-4`), picker button horizontal padding |
 | 6 | 24px | List item gap (`gap-6`), section spacing |
 | 8 | 32px | Header bottom margin |
 
@@ -86,7 +89,7 @@ No additional font sizes may be introduced in this phase.
 |-------|---------|
 | Selected (active identity) | `bg-blue-600 text-white font-semibold` |
 | Unselected | `bg-white text-gray-700 border border-gray-300 font-semibold` |
-| Both buttons | `rounded-md px-5 py-2 min-h-[44px] text-sm` |
+| Both buttons | `rounded-md px-4 py-2 min-h-[44px] text-sm` |
 
 No new colors may be introduced. The `blue-600` accent is the single highlight color for both the
 Log button and the active identity — this ensures visual consistency and keeps the color contract
@@ -133,10 +136,10 @@ the bar: `mb-6` (24px) to match list gap rhythm.
 
 **Identity bar internal layout:**
 ```
-flex items-center gap-3
+flex items-center gap-2
 "I am:" label — Me button — Wife button
 ```
-Full bar container: `mb-6 flex items-center gap-3`
+Full bar container: `mb-6 flex items-center gap-2`
 
 ---
 
@@ -161,7 +164,7 @@ Full bar container: `mb-6 flex items-center gap-3`
 - Renders label + two buttons
 - Selected button: `bg-blue-600 text-white`
 - Unselected button: `bg-white text-gray-700 border border-gray-300`
-- Both buttons: `rounded-md px-5 py-2 min-h-[44px] text-sm font-semibold`
+- Both buttons: `rounded-md px-4 py-2 min-h-[44px] text-sm font-semibold`
 - No animation; plain state swap.
 
 ### 6.3 New lib files (no UI)
