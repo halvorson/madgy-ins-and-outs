@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 3 UI-SPEC approved
-last_updated: "2026-06-06T17:31:38.114Z"
+status: ready_to_plan
+stopped_at: Phase 2 complete (2/2) — ready to discuss Phase 03
+last_updated: 2026-06-06T18:59:36.262Z
 last_activity: 2026-06-06
 progress:
   total_phases: 3
   completed_phases: 1
   total_plans: 3
-  completed_plans: 3
+  completed_plans: 5
   percent: 33
 ---
 
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-06)
 
 **Core value:** At a glance, both caregivers can see when each care event last happened — so meds are never missed or doubled.
-**Current focus:** Phase 2 — full trackables & logging
+**Current focus:** Phase 03 — display polish
 
 ## Current Position
 
-Phase: 2
+Phase: 03
 Plan: Not started
 Status: Ready to plan
 Last activity: 2026-06-06
 
-Progress: [███░░░░░░░] 33%
+Progress: [██████░░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 3
+- Total plans completed: 5
 - Average duration: —
 - Total execution time: 0 hours
 
@@ -45,6 +45,7 @@ Progress: [███░░░░░░░] 33%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01 | 3 | - | - |
+| 2 | 2 | - | - |
 
 **Recent Trend:**
 
@@ -68,8 +69,8 @@ Recent decisions affecting current work:
 - Init: Anonymous auth is invisible — no sign-in screen ever shown to users
 - Init: Config layer is abstracted so it can be replaced without touching rendering components
 - 01-02: Render TrackableList only after auth resolves — simpler than threading authLoading as prop to each card
-- 01-02: loggedBy hardcoded to 'caregiver' for Phase 1; Phase 2 adds Me/Wife picker per LOG-02
 - 01-03: Deployed firestore:rules and hosting as separate firebase deploy targets — allows independent re-deploy of rules without rebuilding frontend
+- 02-01: loggedBy identity stored per-log via localStorage-persisted Me/Wife picker; disabled-until-identity gating prevents writes with null identity
 
 ### Pending Todos
 
@@ -87,6 +88,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-06T17:31:38.109Z
-Stopped at: Phase 3 UI-SPEC approved
-Resume file: .planning/phases/03-display-polish/03-UI-SPEC.md
+Last session: 2026-06-06
+Stopped at: Phase 2 complete — verified 6/6, transitioning to Phase 3 plan
+Resume file: None

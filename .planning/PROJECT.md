@@ -14,18 +14,17 @@ At a glance, both caregivers can see when each care event last happened — so m
 
 <!-- Shipped and confirmed valuable. -->
 
-(None yet — ship to validate)
+- ✓ Caregiver can log a trackable as done "now" with one tap — Phase 1
+- ✓ Each log entry records who did it via a quick Me/Wife picker (no accounts) — Phase 2
+- ✓ Trackables (pills + activities) are defined via a config layer (hardcoded/seeded for MVP, but accessed through an abstracted call so it can become dynamic later) — Phase 2
+- ✓ One person's log appears on the other person's screen in real time (no manual refresh) — Phase 1 (listener active; display of elapsed time is Phase 3)
+- ✓ Access is gated by invisible Firebase Anonymous Auth + Firestore rules requiring auth, served from an obscure Hosting URL — Phase 1
 
 ### Active
 
 <!-- Current scope. Building toward these. MVP. -->
 
 - [ ] Caregiver can see, for each trackable (each pill + ate/peed/pooed), how long ago it was last logged
-- [ ] Caregiver can log a trackable as done "now" with one tap
-- [ ] Each log entry records who did it via a quick Me/Wife picker (no accounts)
-- [ ] One person's log appears on the other person's screen in real time (no manual refresh)
-- [ ] Trackables (pills + activities) are defined via a config layer (hardcoded/seeded for MVP, but accessed through a dummy/abstracted call so it can become dynamic later)
-- [ ] Access is gated by invisible Firebase Anonymous Auth + Firestore rules requiring auth, served from an obscure Hosting URL
 
 ### Out of Scope
 
@@ -62,13 +61,14 @@ At a glance, both caregivers can see when each care event last happened — so m
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Unified "trackable" concept for pills + activities | Avoids two parallel systems; matches owner's mental model and eases future generalization | — Pending |
-| Hardcode/seed trackable config behind an abstracted call | Fast to ship MVP while leaving a clean seam for a future dynamic/UI-driven config | — Pending |
-| Firestore for storage + real-time | Two caregivers need each other's updates live; Firestore does this natively | — Pending |
-| Firebase Anonymous Auth (no login UI) + obscure URL | Keeps random/bot traffic out with zero user friction; no accounts to manage | — Pending |
-| Lightweight framework (React/Vite) over vanilla | Planned follow-ups (full log, schedules, config UI) are easier to grow into | — Pending |
-| Append-only logging, "now" timestamps for MVP | Defers edit/delete/backdate complexity to the full-log feature | — Pending |
-| Data model leaves room for multiple "subjects" | Future multi-pet / family-member tracking shouldn't require a rewrite | — Pending |
+| Unified "trackable" concept for pills + activities | Avoids two parallel systems; matches owner's mental model and eases future generalization | Shipped Phase 2 — 6 trackables from single getTrackables() config function |
+| Hardcode/seed trackable config behind an abstracted call | Fast to ship MVP while leaving a clean seam for a future dynamic/UI-driven config | Shipped Phase 2 — getTrackables() returns static array; swappable without touching TrackableList/Card |
+| Firestore for storage + real-time | Two caregivers need each other's updates live; Firestore does this natively | Shipped Phase 1 — onSnapshot listener active; elapsed-time display deferred to Phase 3 |
+| Firebase Anonymous Auth (no login UI) + obscure URL | Keeps random/bot traffic out with zero user friction; no accounts to manage | Shipped Phase 1 — invisible anonymous auth, Firestore rules enforce auth != null |
+| Lightweight framework (React/Vite) over vanilla | Planned follow-ups (full log, schedules, config UI) are easier to grow into | Shipped Phase 1 — React/Vite deployed to Firebase Hosting |
+| Append-only logging, "now" timestamps for MVP | Defers edit/delete/backdate complexity to the full-log feature | Shipped Phase 1 — addLog() writes serverTimestamp(); no edit/delete UI |
+| Data model leaves room for multiple "subjects" | Future multi-pet / family-member tracking shouldn't require a rewrite | Shipped Phase 1 — logsCollection('madgy') and addLog('madgy', ...) use subject param throughout |
+| loggedBy identity stored per-log, not per-session | Both caregivers on same Firebase project; identity attribution is per-entry not per-auth token | Shipped Phase 2 — Me/Wife picker persists to localStorage; passed as loggedBy to every addLog() call |
 
 ## Evolution
 
@@ -88,4 +88,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-06 after initialization*
+*Last updated: 2026-06-06 after Phase 2*
