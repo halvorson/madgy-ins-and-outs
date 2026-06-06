@@ -12,11 +12,15 @@ export function logsCollection(subject: string) {
   return collection(db, 'subjects', subject, 'logs')
 }
 
-export async function addLog(subject: string, trackableId: string): Promise<void> {
+export async function addLog(
+  subject: string,
+  trackableId: string,
+  loggedBy: string,
+): Promise<void> {
   const entry: LogEntry = {
     trackableId,
     timestamp: serverTimestamp(),
-    loggedBy: 'caregiver',
+    loggedBy,
   }
   await addDoc(logsCollection(subject), entry)
 }
