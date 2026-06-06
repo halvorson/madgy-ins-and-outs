@@ -5,9 +5,10 @@ interface TrackableCardProps {
   displayName: string
   onLog: () => Promise<void>
   disabled?: boolean
+  lastLoggedText: string
 }
 
-export function TrackableCard({ displayName, onLog, disabled }: TrackableCardProps) {
+export function TrackableCard({ displayName, onLog, disabled, lastLoggedText }: TrackableCardProps) {
   const [writing, setWriting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -30,7 +31,7 @@ export function TrackableCard({ displayName, onLog, disabled }: TrackableCardPro
           {displayName}
         </h2>
         <p className="text-sm font-normal leading-relaxed text-gray-500 mt-1">
-          &mdash;
+          {lastLoggedText}
         </p>
       </div>
       <div className="flex flex-col items-end">
