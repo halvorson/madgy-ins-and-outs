@@ -39,7 +39,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — Vite scaffold, Firebase SDK wiring, env config, Hosting config (manual Firebase project creation checkpoint)
+- [x] 01-01-PLAN.md — Vite scaffold, Firebase SDK wiring, env config, Hosting config (manual Firebase project creation checkpoint)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -88,6 +88,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Deployed Thin Slice | 0/3 | Not started | - |
+| 1. Deployed Thin Slice | 1/3 | In Progress|  |
 | 2. Full Trackables & Logging | 0/TBD | Not started | - |
 | 3. Display & Polish | 0/TBD | Not started | - |

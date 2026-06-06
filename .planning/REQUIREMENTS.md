@@ -26,7 +26,7 @@ Requirements for the initial MVP release. Each maps to a roadmap phase.
 
 ### Access & Infrastructure
 
-- [ ] **INFRA-01**: App is built with a lightweight framework (React + Vite or similar) and deployed to Firebase Hosting
+- [x] **INFRA-01**: App is built with a lightweight framework (React + Vite or similar) and deployed to Firebase Hosting
 - [ ] **INFRA-02**: Users are authenticated invisibly via Firebase Anonymous Auth (no sign-in screen)
 - [ ] **INFRA-03**: Firestore security rules require authentication for all reads and writes
 
@@ -74,7 +74,7 @@ Which phases cover which requirements. Populated during roadmap creation.
 | DISP-01 | Phase 3 | Pending |
 | DISP-02 | Phase 1 | Pending |
 | DISP-03 | Phase 3 | Pending |
-| INFRA-01 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 1 | Pending |
 | INFRA-03 | Phase 1 | Pending |
 
